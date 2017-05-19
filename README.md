@@ -1,11 +1,13 @@
 # cart-pure-js
-Simple clientside pure JavaScript cart with browser sessionStorage
+Simple standalone clientside pure JavaScript cart with browser sessionStorage
 
 # Usage:
 ## HTML
+**add 2 cart button**
 ```
 <button class="add2cart" data-itemid="123" data-title="some product" data-price="12.99">Add 2 cart</button> 
 ```
+**shopping cart div (you can put it anywhere as it's position is fixed and defined in css)**
 ```
 <div id="shoppingCart" data-price="0">
 <ul></ul>
@@ -14,6 +16,10 @@ Simple clientside pure JavaScript cart with browser sessionStorage
 <strong id="cartTotal"></strong>
 </span>
 </div>
+```
+**becouse it is standalone you can load it asynchronously**
+```
+<script src="cart.pure.js" async></script>
 ```
 ## CSS
 ```
