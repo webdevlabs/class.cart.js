@@ -1,5 +1,5 @@
-# cart-pure-js
-Simple standalone clientside pure JavaScript cart with browser sessionStorage
+# class.cart.js
+Simple standalone client-side pure JavaScript shopping cart with browser sessionStorage
 
 # Usage:
 ## HTML
