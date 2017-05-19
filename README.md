@@ -19,7 +19,7 @@ Simple standalone client-side pure JavaScript shopping cart with browser session
 ```
 **becouse it is standalone you can load it asynchronously**
 ```
-<script src="cart.pure.js" async></script>
+<script src="class.cart.js" async></script>
 ```
 ## CSS
 ```
