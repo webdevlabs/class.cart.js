@@ -75,7 +75,7 @@ class Cart {
         this.cartStorage.forEach(function(item) {
             if (item.qty > 1) { itemQtyBox = item.qty + ' x '; } else { itemQtyBox = ''; }
             var li = document.createElement("li");
-            li.setAttribute("title", 'Премахни');
+            li.setAttribute("title", 'click to Remove');
             li.setAttribute("data-price", item.price);
             li.setAttribute("data-itemid", item.id);
             li.appendChild(document.createTextNode(itemQtyBox + item.title));
@@ -87,7 +87,7 @@ class Cart {
         });
         if (cartTotal > 0) {
             document.querySelector('#shoppingCart').style.display = 'block';
-            document.querySelector('#cartTotal').innerHTML = cartTotal.toFixed(2) + 'лв';
+            document.querySelector('#cartTotal').innerHTML = cartTotal.toFixed(2) + 'USD';
         } else {
             document.querySelector('#shoppingCart').style.display = 'none';
         }
