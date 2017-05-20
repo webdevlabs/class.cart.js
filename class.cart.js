@@ -1,11 +1,13 @@
 /* Pure JS Cart v1.0 by Simeon Lyubenov <lyubenov@gmail.com> www.webdevlabs.com */
 
+'use strict';
+
 class Cart {
 
     constructor() {
         this.cartStorage = JSON.parse(sessionStorage.getItem('cart'));
         if (!this.cartStorage) { this.cartStorage = []; }
-        this.updateTotal();
+        this.renderCart();
         document.querySelector('#shoppingCart .cartBtn').addEventListener('click', function(event) {
             if (document.querySelector('#shoppingCart ul').style.display === 'block') {
                 document.querySelector('#shoppingCart ul').style.display = 'none';
@@ -32,7 +34,7 @@ class Cart {
             this.cartStorage.push(item);
         }
         this.saveCart();
-        this.updateTotal();
+        this.renderCart();
     }
 
     removeItem(id) {
@@ -47,7 +49,7 @@ class Cart {
             }
         }
         this.saveCart();
-        this.updateTotal();
+        this.renderCart();
     }
 
     inCart(id) {
@@ -68,14 +70,14 @@ class Cart {
         }
     }
 
-    updateTotal() {
+    renderCart() {
         var cartTotal = Number('0');
         var itemQtyBox = '';
         document.querySelector('#shoppingCart ul').innerHTML = '';
         this.cartStorage.forEach(function(item) {
             if (item.qty > 1) { itemQtyBox = item.qty + ' x '; } else { itemQtyBox = ''; }
             var li = document.createElement("li");
-            li.setAttribute("title", 'click to Remove');
+            li.setAttribute("title", 'Премахни');
             li.setAttribute("data-price", item.price);
             li.setAttribute("data-itemid", item.id);
             li.appendChild(document.createTextNode(itemQtyBox + item.title));
@@ -87,7 +89,7 @@ class Cart {
         });
         if (cartTotal > 0) {
             document.querySelector('#shoppingCart').style.display = 'block';
-            document.querySelector('#cartTotal').innerHTML = cartTotal.toFixed(2) + 'USD';
+            document.querySelector('#cartTotal').innerHTML = cartTotal.toFixed(2) + 'лв';
         } else {
             document.querySelector('#shoppingCart').style.display = 'none';
         }
