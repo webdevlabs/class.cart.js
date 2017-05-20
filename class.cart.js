@@ -5,6 +5,9 @@
 class Cart {
 
     constructor() {
+        // set cart template vars
+        this.currencySymbol = 'USD';
+        this.removeItemTitle = 'remove from cart';
         // fetch cartStorage object from sessionStorage
         this.cartStorage = JSON.parse(sessionStorage.getItem('cart'));
         if (!this.cartStorage) { this.cartStorage = []; }
@@ -76,12 +79,13 @@ class Cart {
     renderCart() {
         var cartTotal = Number('0');
         var itemQtyBox = '';
+        var removeItemTitle = this.removeItemTitle;        
         document.querySelector('#shoppingCart ul').innerHTML = '';
         // Render Cart view items from cartStorage object
         this.cartStorage.forEach(function(item) {
             if (item.qty > 1) { itemQtyBox = item.qty + ' x '; } else { itemQtyBox = ''; }
             var li = document.createElement("li");
-            li.setAttribute("title", 'click to remove');
+            li.setAttribute("title", removeItemTitle);
             li.setAttribute("data-price", item.price);
             li.setAttribute("data-itemid", item.id);
             li.appendChild(document.createTextNode(itemQtyBox + item.title));
@@ -95,7 +99,7 @@ class Cart {
         });
         if (cartTotal > 0) {
             document.querySelector('#shoppingCart').style.display = 'block';
-            document.querySelector('#cartTotal').innerHTML = cartTotal.toFixed(2) + 'USD';
+            document.querySelector('#cartTotal').innerHTML = cartTotal.toFixed(2) + this.currencySymbol;
         } else {
             // hide cart if no items
             document.querySelector('#shoppingCart').style.display = 'none';
