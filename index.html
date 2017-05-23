@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>class.cart.js - WebDevLabs</title>
+    <link href="/class.cart.js/assets/css/style.css?v=8190d69dc201fafb67b0e586783467d786178f30" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container markdown-body">
+      <h1 id="classcartjs">class.cart.js</h1>
+<p>Simple standalone client-side pure JavaScript (<em>ECMAScript 6</em>) shopping cart with browser sessionStorage</p>
+
+<h1 id="usage">Usage:</h1>
+<h2 id="html">HTML</h2>
+<p><strong>add 2 cart button</strong></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;button class="add2cart" data-itemid="123" data-title="some product" data-price="12.99"&gt;Add 2 cart&lt;/button&gt; 
+</code></pre>
+</div>
+<p><strong>shopping cart div (you can put it anywhere as it’s position is fixed and defined in css)</strong></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;div id="shoppingCart" data-price="0"&gt;
+&lt;ul&gt;&lt;/ul&gt;
+&lt;span class="cartBtn"&gt;
+&lt;i class="glyphicon glyphicon-shopping-cart"&gt;&lt;/i&gt;
+&lt;strong id="cartTotal"&gt;&lt;/strong&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+<p><strong>becouse it is standalone you can load it asynchronously</strong></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;script src="class.cart.js" async&gt;&lt;/script&gt;
+</code></pre>
+</div>
+<h2 id="css">CSS</h2>
+<div class="highlighter-rouge"><pre class="highlight"><code>#shoppingCart {
+    display: none;
+    position: fixed;
+    right: 17px;
+    bottom: 0;
+    z-index: 9999;
+    opacity: 0.8;
+    background-color: #ff8040;
+    border-radius: 7px;
+    min-width: 100px;
+    color: black;
+}
+
+#shoppingCart ul {
+    text-align: left;
+    list-style-type: none;
+    margin: 10px;
+    padding: 0;
+    display: none;
+}
+
+#shoppingCart ul li,
+.cartBtn {
+    cursor: pointer;
+}
+
+#shoppingCart ul li:hover {
+    cursor: pointer;
+    color: white;
+    text-decoration: line-through;
+}
+</code></pre>
+</div>
+
+    </div>
+  </body>
+</html>
