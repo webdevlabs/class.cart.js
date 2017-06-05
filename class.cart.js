@@ -1,4 +1,4 @@
-/* Pure JS Cart v1.0 by Simeon Lyubenov <lyubenov@gmail.com> www.webdevlabs.com */
+/* Pure JS Cart v1.1 by Simeon Lyubenov <lyubenov@gmail.com> www.webdevlabs.com */
 
 'use strict';
 
@@ -8,11 +8,11 @@ class Cart {
         // set cart template vars
         this.currencySymbol = 'USD';
         this.removeItemTitle = 'remove from cart';
-        // fetch cartStorage object from sessionStorage
+        // fetch cartStorage object from sessionStorage        
         this.cartStorage = JSON.parse(sessionStorage.getItem('cart'));
         if (!this.cartStorage) { this.cartStorage = []; }
         this.renderCart();
-        // attach show/hide cart button
+        // attach show/hide cart button        
         document.querySelector('#shoppingCart .cartBtn').addEventListener('click', function(event) {
             if (document.querySelector('#shoppingCart ul').style.display === 'block') {
                 document.querySelector('#shoppingCart ul').style.display = 'none';
@@ -23,7 +23,7 @@ class Cart {
     }
 
     saveCart() {
-        // save cartStorage object to local browser sessionStorage
+        // save cartStorage object to local browser sessionStorage        
         sessionStorage.setItem('cart', JSON.stringify(this.cartStorage));
     }
 
@@ -79,29 +79,32 @@ class Cart {
     renderCart() {
         var cartTotal = Number('0');
         var itemQtyBox = '';
-        var removeItemTitle = this.removeItemTitle;        
+        var removeItemTitle = this.removeItemTitle;
+        var currencySymbol = this.currencySymbol;
         document.querySelector('#shoppingCart ul').innerHTML = '';
-        // Render Cart view items from cartStorage object
+        // Render Cart view items from cartStorage object        
         this.cartStorage.forEach(function(item) {
             if (item.qty > 1) { itemQtyBox = item.qty + ' x '; } else { itemQtyBox = ''; }
-            var li = document.createElement("li");
+            let li = document.createElement("li");
             li.setAttribute("title", removeItemTitle);
             li.setAttribute("data-price", item.price);
             li.setAttribute("data-itemid", item.id);
-            li.appendChild(document.createTextNode(itemQtyBox + item.title));
-            // attach on click remove item from cart
+            let TplCartItem = `${itemQtyBox} ${item.title} = ${Number(item.price * item.qty).toFixed(2)}${currencySymbol}`;
+            li.appendChild(document.createTextNode(TplCartItem));
+            // attach on click remove item from cart            
             li.addEventListener('click', function(event) {
                 window.cart.removeItem(item.id);
             });
             document.querySelector('#shoppingCart ul').appendChild(li);
-            // increase the cartTotal amount
+            // increase the cartTotal amount            
             cartTotal = Number(cartTotal + (Number(item.price) * Number(item.qty)));
         });
         if (cartTotal > 0) {
             document.querySelector('#shoppingCart').style.display = 'block';
-            document.querySelector('#cartTotal').innerHTML = cartTotal.toFixed(2) + this.currencySymbol;
+            let TplCartTotal = `${cartTotal.toFixed(2)}${currencySymbol}`;
+            document.querySelector('#cartTotal').innerHTML = TplCartTotal;
         } else {
-            // hide cart if no items
+            // hide cart if no items            
             document.querySelector('#shoppingCart').style.display = 'none';
         }
     }
@@ -111,7 +114,11 @@ class Cart {
 // Create the Cart object when the page is loaded
 document.onreadystatechange = function() {
     if (document.readyState == 'complete') {
-        window.cart = new Cart();
+        try {
+            window.cart = new Cart();
+        } catch (err) {
+            console.log('CartJS error: ' + err);
+        }
     }
 };
 
