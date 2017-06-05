@@ -84,7 +84,7 @@ class Cart {
         document.querySelector('#shoppingCart ul').innerHTML = '';
         // Render Cart view items from cartStorage object        
         this.cartStorage.forEach(function(item) {
-            if (item.qty > 1) { itemQtyBox = item.qty + ' x '; } else { itemQtyBox = ''; }
+            if (item.qty > 1) { itemQtyBox = `${item.qty} x`; } else { itemQtyBox = ''; }
             let li = document.createElement("li");
             li.setAttribute("title", removeItemTitle);
             li.setAttribute("data-price", item.price);
