@@ -55,8 +55,10 @@ Simple standalone client-side pure JavaScript (*ECMAScript 6*) shopping cart wit
     text-decoration: line-through;
 }
 ```
-## Suggested usage
+## Web Component
 **the easiest way to use the shopping cart is with the self contained web component**
+
+*Notice: limited browser support without polyfill*
 
 Put the following code into your html head:
 ```
