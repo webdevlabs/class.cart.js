@@ -9,7 +9,7 @@ Simple standalone client-side pure JavaScript (*ECMAScript 6*) shopping cart wit
 ```
 **shopping cart div (you can put it anywhere as it's position is fixed and defined in css)**
 ```
-<div id="shoppingCart" data-price="0">
+<div id="shoppingCart">
 <ul></ul>
 <span class="cartBtn">
 <i class="glyphicon glyphicon-shopping-cart"></i>
@@ -54,4 +54,15 @@ Simple standalone client-side pure JavaScript (*ECMAScript 6*) shopping cart wit
     color: white;
     text-decoration: line-through;
 }
+```
+## Suggested usage
+**the easiest way to use the shopping cart is with the html5 custom element**
+
+Put the following code into your html head:
+```
+<link rel="import" href="{BASE_URL}/assets/components/cart.html">
+```
+Put the following code into your html body:
+```
+<shopping-cart></shopping-cart>
 ```
