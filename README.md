@@ -62,7 +62,7 @@ Simple standalone client-side pure JavaScript (*ECMAScript 6*) shopping cart wit
 
 Put the following code into your html head:
 ```
-<link rel="import" href="shopping-cart.component">
+<link rel="import" href="shopping-cart.component.html">
 ```
 Put the following code into your html body:
 ```
