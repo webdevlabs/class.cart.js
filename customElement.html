@@ -1,0 +1,62 @@
+<template id="shopping-cart-template">
+    <style>
+    #shoppingCart {
+        display: none;
+        position: fixed;
+        right: 17px;
+        bottom: 0;
+        z-index: 9999;
+        opacity: 0.8;
+        background-color: #ff8040;
+        border-radius: 7px;
+        min-width: 100px;
+        color: black;
+    }
+
+    #shoppingCart ul {
+        text-align: left;
+        list-style-type: none;
+        margin: 10px;
+        padding: 0;
+        display: none;
+    }
+
+    #shoppingCart ul li,
+    .cartBtn {
+        cursor: pointer;
+    }
+
+    #shoppingCart ul li:hover {
+        cursor: pointer;
+        color: white;
+        text-decoration: line-through;
+    }    
+    </style>
+
+    <div id="shoppingCart">
+    <ul></ul>
+    <span class="cartBtn">
+    <i class="glyphicon glyphicon-shopping-cart"></i>
+    <strong id="cartTotal"></strong>
+    </span>
+    </div>
+    
+</template>
+
+<script>
+    (function() {
+        const doc = (document._currentScript || document.currentScript).ownerDocument;
+        const template = doc.querySelector('#shopping-cart-template');
+
+        customElements.define('shopping-cart', class extends HTMLElement {
+            constructor() {
+                super();
+            }
+            
+            connectedCallback() {
+                const temp = document.importNode(template.content, true);
+                this.appendChild(temp);
+            }
+        });
+    })();
+</script>
