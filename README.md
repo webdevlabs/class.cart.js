@@ -56,13 +56,14 @@ Simple standalone client-side pure JavaScript (*ECMAScript 6*) shopping cart wit
 }
 ```
 ## Suggested usage
-**the easiest way to use the shopping cart is with the html5 custom element**
+**the easiest way to use the shopping cart is with the self contained web component**
 
 Put the following code into your html head:
 ```
-<link rel="import" href="customElement.html">
+<link rel="import" href="shopping-cart.component">
 ```
 Put the following code into your html body:
 ```
 <shopping-cart></shopping-cart>
 ```
+This will include the class.cart.js + styles + html element which is everything you need in a single file.
