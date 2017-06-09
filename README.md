@@ -58,7 +58,7 @@ Simple standalone client-side pure JavaScript (*ECMAScript 6*) shopping cart wit
 ## Web Component
 **the easiest way to use the shopping cart is with the self contained web component**
 
-*Notice: limited browser support without polyfill*
+*Notice: limited browser support without [polyfill](https://github.com/webcomponents/webcomponentsjs)*
 
 Put the following code into your html head:
 ```
