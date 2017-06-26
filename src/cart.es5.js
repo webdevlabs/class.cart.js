@@ -79,7 +79,7 @@ Cart.prototype.renderCart = function() {
     document.querySelector('#shoppingCart ul').innerHTML = '';
     this.cartStorage.forEach(function(item) {
         if (item.qty > 1) { itemQtyBox = item.qty + ' x '; } else { itemQtyBox = ''; }
-        let li = document.createElement("li");
+        var li = document.createElement("li");
         li.setAttribute("title", removeItemTitle);
         li.setAttribute("data-price", item.price);
         li.setAttribute("data-itemid", item.id);
