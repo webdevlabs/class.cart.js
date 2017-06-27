@@ -4,8 +4,8 @@
 
 
 function Cart() {
-    this.currencySymbol = 'лв';
-    this.removeItemTitle = 'премахни';
+    this.currencySymbol = 'USD';
+    this.removeItemTitle = 'remove from cart';
     this.cartStorage = JSON.parse(sessionStorage.getItem('cart'));
     if (!this.cartStorage) { this.cartStorage = []; }
     this.renderCart();
@@ -83,7 +83,7 @@ Cart.prototype.renderCart = function() {
         li.setAttribute("title", removeItemTitle);
         li.setAttribute("data-price", item.price);
         li.setAttribute("data-itemid", item.id);
-        li.appendChild(document.createTextNode(itemQtyBox + item.title));
+        li.appendChild(document.createTextNode(itemQtyBox + item.title + ' = ' + Number(item.price * item.qty).toFixed(2) + currencySymbol));
         li.addEventListener('click', function(event) {
             window.cart.removeItem(item.id);
         });

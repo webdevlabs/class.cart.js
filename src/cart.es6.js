@@ -5,8 +5,8 @@
 class Cart {
 
     constructor() {
-        this.currencySymbol = 'лв';
-        this.removeItemTitle = 'премахни';
+        this.currencySymbol = 'USD';
+        this.removeItemTitle = 'remove from cart';
         this.cartStorage = JSON.parse(sessionStorage.getItem('cart'));
         if (!this.cartStorage) { this.cartStorage = []; }
         this.renderCart();
